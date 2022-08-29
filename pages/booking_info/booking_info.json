@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+        "calendarweek": "/components/calendarweek/calendarweek",
+        "l-card": "/dist/card/index",
+		"l-list": "/dist/list/index"
+    }
+}

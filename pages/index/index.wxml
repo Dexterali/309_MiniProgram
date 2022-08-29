@@ -1,4 +1,13 @@
-<!--index.wxml-->
-<view class="container">
-  Weixin
+<!-- index.wxml -->
+<view>
+	<l-card type="cover" image="/image/bg.png" title="309预约系统">
+		<view class="content">
+			<l-list title="当前时间为" right-desc="{{listInfo.date}}" icon="time" is-link="{{false}}" />
+			<l-list title="预约" icon="order"  is-link="{{true}}" bind:lintap="go_booking" />
+            <l-list title="预约情况" icon="history"  is-link="{{true}}" bind:lintap="go_bookingInfo" />
+            <l-list title="我的预约" icon="notification"  is-link="{{true}}" bind:lintap="go_myBooking" />
+			<l-list title="联系我" icon="user"  is-link="{{true}}" bind:lintap="go_about" />
+		</view>
+	</l-card>
 </view>
+<!-- <button type="primary" bindtap="go_about">联系我！</button> -->

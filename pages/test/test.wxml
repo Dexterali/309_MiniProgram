@@ -1,0 +1,30 @@
+<!--pages/test/test.wxml-->
+<!-- <view>
+    <l-list desc="每日一句" is-link="{{false}}">
+        <view slot="right-section">
+            <text>作者：{{showInfo.foryoo.author}}</text>
+        </view>
+    </l-list>
+    <l-list is-link="{{false}}">
+        <view slot="left-section">
+            <text>{{showInfo.foryoo.content}}</text>
+        </view>
+    </l-list>
+</view> -->
+
+<view class="section">
+  <view class="section__title">日期选择器</view>
+  <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+    <view class="picker">
+      当前选择: {{date}}
+    </view>
+  </picker>
+</view>
+<view class="section">
+  <view class="section__title">时间选择器</view>
+  <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+    <view class="picker">
+      当前选择: {{time}}
+    </view>
+  </picker>
+</view>

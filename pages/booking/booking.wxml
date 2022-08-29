@@ -1,0 +1,36 @@
+<!-- pages/booking/booking.wxml -->
+<view>
+    <l-form name="booking" l-form-btn-class="l-form-btn-class" bind:linsubmit="submit">
+        <l-form-item label="姓名：" name="bookName" align-items="end">
+            <l-input id="bookName" clear="{{true}}" value="{{booking.name}}" placeholder="请输入你的姓名" hide-label="{{ true }}" show-row="{{false}}" />
+        </l-form-item>
+        <l-form-item label="学号：" name="bookID" align-items="end">
+            <l-input id="bookID" clear="{{true}}" value="{{booking.ID}}" placeholder="请输入你的学号" hide-label="{{ true }}" show-row="{{false}}" />
+        </l-form-item>
+        <l-form-item label="预约日期：" name="bookDate" align-items="end">
+            <picker mode="date" value="{{booking.date}}" start="{{booking.dateStart}}" end="{{booking.dateEnd}}" bindchange="selectDate">
+                <l-input disabled="{{true}}" id="bookDate" value="{{booking.date}}" hide-label="{{ true }}" show-row="{{false}}" />
+                <!-- <text>{{booking.date}}</text> -->
+            </picker>
+        </l-form-item>
+        <l-form-item label="开始时间：" name="bookTime" align-items="end">
+            <picker mode="time" value="{{booking.time}}" start="{{booking.timeStart}}" end="{{booking.timeEnd}}" bindchange="selectTime">
+                <l-input disabled="{{true}}" id="bookTime" value="{{booking.time}}" hide-label="{{ true }}" show-row="{{false}}" />
+                <!-- <text>{{booking.time}}</text> -->
+            </picker>
+        </l-form-item>
+        <l-form-item label="时长：" name="timeLong">
+            <l-radio-group current="{{0}}" id="timeLong" placement="row">
+                <l-radio key="0">30分钟</l-radio>
+                <l-radio key="1">1小时</l-radio>
+                <l-radio key="2">2小时</l-radio>
+            </l-radio-group>
+        </l-form-item>
+        <view slot="submit">
+            <l-button>提交</l-button>
+        </view>
+        <view slot="reset">
+            <l-button type="default" plain>重置</l-button>
+        </view>
+    </l-form>
+</view>

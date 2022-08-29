@@ -1,0 +1,58 @@
+<!-- pages/booking_info/booking_info.wxml -->
+<view id="calendarweekheight" class="date-choose shrink border-bottom10">
+    <view wx:for="{{dateList}}" wx:for-item="date" wx:key="{{index}}">
+    <view class="weekday">
+        <block>
+            <text class="week">{{date.day}}</text>
+        </block>
+    </view>
+    <swiper class="date-choose-swiper" circular="true" indicator-dots="{{false}}" current="{{swiperCurrent}}" bindchange="dateSwiperChange">
+        <block >
+            <swiper-item class="swiper-item">
+                <view class="dateday">
+                    <block>
+                        <view class="day" id="{{day.id}}">
+                            <text >
+                                {{date.weekday}}
+                            </text>
+                        </view>
+                    </block>
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+    </view>
+</view>
+
+
+<view wx:for="{{dateList}}" wx:for-item="date" wx:key="{{index}}">
+    <text  class="weekdays">{{date.day}}</text>
+    <text class="days">{{date.weekday}}</text>
+</view>
+<view class="page">
+    <calendarweek id="calendarweekmenu" bindmyevent="onMyEvent" bindgetHeader="getHeader"></calendarweek>
+    <scroll-view scroll-y="true" style="height: {{scrollViewHeight}}px">
+        <view class='day-content'>
+            <view class='day-hour-bar'>
+                <view class='day-hour-bar-item' wx:for="{{hour_titles}}" wx:key="{{index}}">
+                    <view id="hour-bar-{{index}}" class='item' bindtap='handleTap' style='height:calc(50rpx + {{bar_item_sizes[index].height}} * 50rpx);line-height:calc(50rpx + {{bar_item_sizes[index].height}} * 50rpx)'>
+                        <block wx:if="{{item === '00:00'}}">
+                            <text></text>
+                        </block>
+                        <block wx:else>
+                            <text>{{item}}</text>
+                        </block>
+                    </view>
+                    <view wx:if="{{index != 0}}" class="day-hour-context-item-div"></view>
+                </view>
+            </view>
+            <view class="day-content-item">
+                <view class="day-content-item-sub" wx:for="{{testData}}">
+                    <view class="day-content-show" style="margin-top:calc({{item.top}}*10rpx); height:calc({{item.height == 0 ? 1 : item.height}} * 60rpx)">
+                        <text class="day-content-show-tex">{{item.key}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

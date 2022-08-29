@@ -1,11 +1,17 @@
 {
     "pages": [
-        "pages/index/index"
+        "pages/login/login",
+        "pages/index/index",
+        "pages/booking/booking",
+        "pages/booking_info/booking_info",
+        "pages/my_booking/my_booking",
+        "pages/about/about",
+        "pages/test/test"
     ],
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "Weixin",
+        "navigationBarTitleText": "309预约系统",
         "navigationBarTextStyle": "black"
     },
     "style": "v2",

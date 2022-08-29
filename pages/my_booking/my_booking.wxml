@@ -1,0 +1,30 @@
+<!-- pages/my_booking/my_booking.wxml -->
+<view class="ticket-container">
+    <view class="ticket-container-top">
+        <view class="ticket-left">
+            <view class="name">我的预约信息</view>
+            <view class="date">有效期至{{getInfo.date}}</view>
+        </view>
+        <view class="ticket-right">
+            <view class="number">{{getInfo.timeLong}}</view>
+            <view class="text">小时</view>
+        </view>
+    </view>
+    <view class="ticket-container-bottom">
+        <l-collapse>
+            <l-collapse-item l-body-class="l-body-class" l-title-class="l-title-class" customTitle="{{true}}">
+                <!-- 自定义标题 -->
+                <view class="title" slot="title">
+                    <view class="ticket-detail-container">
+                        使用规则
+                        <l-icon name="down" size="16" color="#999" />
+                    </view>
+                    <l-button l-class height="50" size="mini" shape="semicircle" plain="{{true}}" bind:lintap="showBookingInfo">
+                        立即使用
+                    </l-button>
+                </view>
+                <text>1、本密码为309开锁密码\n2、预约期间可用</text>
+            </l-collapse-item>
+        </l-collapse>
+    </view>
+</view>

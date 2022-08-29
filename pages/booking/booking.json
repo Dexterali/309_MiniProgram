@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "l-form": "/dist/form/index",
+        "l-form-item": "/dist/form-item/index",
+        "l-button": "/dist/button/index",
+        "l-input": "/dist/input/index",
+        "l-radio-group": "/dist/radio-group/index",
+        "l-radio": "/dist/radio/index"
+    }
+}

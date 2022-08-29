@@ -1,0 +1,6 @@
+/* pages/booking/booking.wxss */
+.l-form-btn-class {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10rpx;
+}

@@ -1,0 +1,15 @@
+<!-- pages/booking_info/booking_info.wxml -->
+<view class="page">
+    <calendarweek id="calendarweekmenu" bindmyevent="onMyEvent"></calendarweek>
+    <view class="page-section-spacing" wx:for="{{listInfo}}" wx:for-item="info" wx:key="{{index}}">
+        <scroll-view scroll-y="true" style="height: auto;">
+            <l-card type="primary" plaintext="{{true}}" title="预约信息01">
+                <view class="content">
+                    <l-list title="预约人：" right-desc="{{info.user}}" icon="user" is-link="{{false}}" />
+                    <l-list title="预约时间：" right-desc="{{info.time}}" icon="time" is-link="{{false}}" />
+                    <l-list title="预约时长：" right-desc="{{info.timeLong}}小时" icon="history" is-link="{{false}}" />
+                </view>
+            </l-card>
+        </scroll-view>
+    </view>
+</view>

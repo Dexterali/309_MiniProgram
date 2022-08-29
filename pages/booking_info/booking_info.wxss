@@ -1,4 +1,10 @@
-/**index.wxss**/
+/* pages/booking_info/booking_info.wxss */
+.page {
+    overflow: scroll;
+    width: 100vw;
+    height: 100vh;
+}
+
 .content {
     margin-top: 10rpx;
     color: #666;
@@ -8,4 +14,8 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 5;
+}
+
+.page-section-spacing {
+    margin-top: 60rpx;
 }
