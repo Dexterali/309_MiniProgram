@@ -3,6 +3,7 @@
     "usingComponents": {
         "calendarweek": "/components/calendarweek/calendarweek",
         "l-card": "/dist/card/index",
-		"l-list": "/dist/list/index"
+		"l-list": "/dist/list/index",
+        "l-notice-bar": "/dist/notice-bar/index"
     }
 }

@@ -4,8 +4,11 @@
         <l-form-item label="姓名：" name="bookName" align-items="end">
             <l-input id="bookName" clear="{{true}}" value="{{booking.name}}" placeholder="请输入你的姓名" hide-label="{{ true }}" show-row="{{false}}" />
         </l-form-item>
-        <l-form-item label="学号：" name="bookID" align-items="end">
-            <l-input id="bookID" clear="{{true}}" value="{{booking.ID}}" placeholder="请输入你的学号" hide-label="{{ true }}" show-row="{{false}}" />
+        <!-- <l-form-item label="学号：" name="bookID" align-items="end">
+            <l-input disabled="{{true}}" id="bookID" value="{{booking.ID}}" hide-label="{{ true }}" show-row="{{false}}" />
+        </l-form-item> -->
+        <l-form-item label="联系方式：" name="bookPhoneNumber" align-items="end">
+            <l-input id="bookPhoneNumber" clear="{{true}}" value="{{booking.phoneNumber}}" placeholder="请输入你的联系方式" hide-label="{{ true }}" show-row="{{false}}" />
         </l-form-item>
         <l-form-item label="预约日期：" name="bookDate" align-items="end">
             <picker mode="date" value="{{booking.date}}" start="{{booking.dateStart}}" end="{{booking.dateEnd}}" bindchange="selectDate">
@@ -20,8 +23,8 @@
             </picker>
         </l-form-item>
         <l-form-item label="时长：" name="timeLong">
-            <l-radio-group current="{{0}}" id="timeLong" placement="row">
-                <l-radio key="0">30分钟</l-radio>
+            <l-radio-group current="{{1}}" id="timeLong" placement="row">
+                <l-radio key="0.5">30分钟</l-radio>
                 <l-radio key="1">1小时</l-radio>
                 <l-radio key="2">2小时</l-radio>
             </l-radio-group>

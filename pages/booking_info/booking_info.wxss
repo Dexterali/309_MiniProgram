@@ -17,5 +17,5 @@
 }
 
 .page-section-spacing {
-    margin-top: 60rpx;
+    margin-top: 20rpx;
 }

@@ -1,12 +1,12 @@
 <!-- pages/my_booking/my_booking.wxml -->
-<view class="ticket-container">
+<view class="ticket-container" wx:if="{{show}}" wx:for="{{getInfo}}" wx:for-item="info" wx:key="{{index}}">
     <view class="ticket-container-top">
         <view class="ticket-left">
             <view class="name">我的预约信息</view>
-            <view class="date">有效期至{{getInfo.date}}</view>
+            <view class="date">开始时间：{{cpTime[index]}}</view>
         </view>
         <view class="ticket-right">
-            <view class="number">{{getInfo.timeLong}}</view>
+            <view class="number">{{info.timelong}}</view>
             <view class="text">小时</view>
         </view>
     </view>
@@ -27,4 +27,7 @@
             </l-collapse-item>
         </l-collapse>
     </view>
+</view>
+<view wx:if="{{!show}}">
+    <l-notice-bar show="{{true}}">暂无预约信息！</l-notice-bar>
 </view>

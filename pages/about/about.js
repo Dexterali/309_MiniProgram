@@ -5,7 +5,24 @@ Page({
      * 页面的初始数据
      */
     data: {
+        github: "https://github.com/Dexterali",
+        content: "欢迎大家fork本项目，一起维护本项目！"
+    },
 
+    showMyInfo() {
+        wx.showModal({
+            cancelColor: "black",
+            confirmColor: "red",
+            title: '关注我',
+            content: this.data.github + '\n' + this.data.content,
+            success(res) {
+                if (res.confirm) {
+                    // console.log('用户点击确定')
+                } else if (res.cancel) {
+                    // console.log('用户点击取消')
+                }
+            }
+        })
     },
 
     /**

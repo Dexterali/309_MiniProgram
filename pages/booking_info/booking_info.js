@@ -1,5 +1,6 @@
 // pages/booking_info/booking_info.js
-import {formatDate} from "../../utils/date_util";
+import { formatDate, formatTime } from "../../utils/date_util";
+import { GET } from "../../utils/request";
 
 Page({
 
@@ -7,63 +8,107 @@ Page({
      * 页面的初始数据
      */
     data: {
-        listInfo: [
-            {
-                user: "李文举",
-                time: "12:00",
-                timeLong: "0.5"
-            },
-            {
-                user: "李文举",
-                time: "12:00",
-                timeLong: "0.5"
-            },
-            {
-                user: "李文举",
-                time: "12:00",
-                timeLong: "0.5"
-            },
-            {
-                user: "李文举",
-                time: "12:00",
-                timeLong: "0.5"
-            }
-        ]
+        listInfo: [],
+        // 从listinfo中获得的时间数据，用于美化
+        cpTime: [],
+        show: false,
     },
 
     // date 格式为 yyyy-mm-dd
     getInfo: function (date) {
         const that = this;
-        wx.request({
-            url: '#',
-            method: 'GET',
-            header: {
-                'content-type': 'application/json',
-            },
-            data: {
-                date
-            },
-            //获取当日预约信息
-            success(res) {
+
+        GET("https://api.huolihang.top:5001/", "user/info", { date: date })
+            .then(res => {
+                console.log(res);
+                // 服务端返回数据格式如下
+                /* 
+                    {
+                        "code": 200,
+                        "msg": "success",
+                        "data": [
+                            {
+                                "studentid": "201911081904",
+                                "studentname": "李文举",
+                                "phonenumber": "18801313238",
+                                "bookdate": "2020-09-30T13:08:01.000Z",
+                                "timelong": "3",
+                                "isorder": 1,
+                                "password": "SqVcVDfQWz"
+                            },
+                            {
+                                "studentid": "201911081906",
+                                "studentname": "111",
+                                "phonenumber": "18801313239",
+                                "bookdate": "2020-09-30T13:08:01.000Z",
+                                "timelong": "3",
+                                "isorder": 1,
+                                "password": null
+                            },
+                            {
+                                "studentid": "201911081907",
+                                "studentname": "2222",
+                                "phonenumber": "18801313239",
+                                "bookdate": "2020-09-30T13:08:01.000Z",
+                                "timelong": "3",
+                                "isorder": 0,
+                                "password": null
+                            },
+                            {
+                                "studentid": "201911081910",
+                                "studentname": "小李",
+                                "phonenumber": "18801313239",
+                                "bookdate": "2020-09-30T13:08:01.000Z",
+                                "timelong": "2",
+                                "isorder": 1,
+                                "password": "t67WW5toqG"
+                            }
+                        ]
+                    }
+                */
                 const { data, code } = res.data;
-                if (code === 200) {
+                if (code === 200 && data.length !== 0) {
                     that.setData({
                         listInfo: data,
+                        show: true,
                     })
                 }
-            },
-            // 获取预约信息失败
-            fail(err) {
-                console.log(err);
-            }
-        });
+                // 美化显示时间
+                const cpTime = that.data.listInfo.map(item => formatTime(new Date(item.bookdate)));
+                that.setData({
+                    cpTime,
+                })
+            });
     },
 
     //获取选择的日历数据
     onMyEvent: function (e) {
+        // 获取数据之前先把旧数据置空
+        this.setData({
+            listInfo: [],
+            cpTime: [],
+            show: false,
+        })
         console.log('选择的日期:', e.detail);
-        const date = e.detail.date;
-        this.getInfo(date);
+        const date = e.detail.data;
+        const that = this;
+
+        GET("https://api.huolihang.top:5001/", "user/info", { date: date })
+            .then(res => {
+                console.log(res);
+                const { data, code } = res.data;
+                if (code === 200 && data.length !== 0) {
+                    that.setData({
+                        listInfo: data,
+                        show: true,
+                    })
+                }
+                // 美化显示时间
+                const cpTime = that.data.listInfo.map(item => formatTime(new Date(item.bookdate)));
+                that.setData({
+                    cpTime,
+                })
+            });
     },
 
     /**

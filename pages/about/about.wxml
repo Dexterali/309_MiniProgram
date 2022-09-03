@@ -2,9 +2,10 @@
 <l-card type="avatar" l-class="card" image="/image/about.jpg" title="李文举" describe="">
     <!-- 此处为content -->
     <view class="avter-content">
-        关于我
+        关于我：
+        2019级计算机师范班本科生！
     </view>
-    <view class="avter-share-container">
+    <!-- <view class="avter-share-container">
         <view class="like-container">
             <l-icon name="like" color="#666" size="28" />
             <view class="number">160喜欢</view>
@@ -13,8 +14,8 @@
             <l-icon name="default" color="#666" size="28" />
             <view class="number">10评论</view>
         </view>
-    </view>
-    <l-tag shape="circle" bg-color="#f3f3f3" font-color="#3963BC" slot="more" size="large">
-        + 关注
+    </view> -->
+    <l-tag bind:lintap="showMyInfo" shape="circle" bg-color="#f3f3f3" font-color="#3963BC" slot="more" size="large">
+        关注
     </l-tag>
 </l-card>
