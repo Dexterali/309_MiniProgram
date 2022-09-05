@@ -111,8 +111,8 @@ Page({
                     wx.showModal({
                         cancelColor: "black",
                         confirmColor: "red",
-                        title: "网络错误",
-                        content: "请联系管理员！",
+                        title: "网络错误！",
+                        content: "请联系管理员：18801313238",
                         success(res) {
                             if (res.confirm) {
                                 // console.log('用户点击确定')
