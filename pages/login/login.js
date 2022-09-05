@@ -106,6 +106,22 @@ Page({
         */
         GET("https://api.huolihang.top:5001/", "user/login", { account: this.data.account })
             .then(res => {
+                // 如果服务端出现错误！
+                if (res.data.code === 500) {
+                    wx.showModal({
+                        cancelColor: "black",
+                        confirmColor: "red",
+                        title: "网络错误",
+                        content: "请联系管理员！",
+                        success(res) {
+                            if (res.confirm) {
+                                // console.log('用户点击确定')
+                            } else if (res.cancel) {
+                                // console.log('用户点击取消')
+                            }
+                        }
+                    })
+                }
                 this.setData({
                     getInfo: res.data.data[0],
                 })

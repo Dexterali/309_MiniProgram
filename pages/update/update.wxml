@@ -1,0 +1,14 @@
+<!--pages/update/update.wxml-->
+<view>
+    <l-form name="info" l-form-btn-class="l-form-btn-class" bind:linsubmit="submit">
+        <l-form-item label="新的密码：" name="infoPwd" align-items="end">
+            <l-input id="infoPwd" clear="{{true}}" value="" placeholder="请输入新的密码" hide-label="{{ true }}" show-row="{{false}}" />
+        </l-form-item>
+        <view slot="submit">
+            <l-button>提交</l-button>
+        </view>
+        <view slot="reset">
+            <l-button type="default" plain>重置</l-button>
+        </view>
+    </l-form>
+</view>

@@ -169,11 +169,12 @@ Page({
                                 }
                             })
                         } else {
-                            //提示用户预约冲突
+                            //提示用户预约失败的原因：预约冲突和重复预约
+                            const { msg } = res.data;
                             wx.showModal({
                                 cancelColor: "black",
                                 confirmColor: "red",
-                                title: '预约冲突！',
+                                title: msg,
                                 success(res) {
                                     if (res.confirm) {
                                         // console.log('用户点击确定')

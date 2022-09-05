@@ -6,6 +6,7 @@
         "pages/booking_info/booking_info",
         "pages/my_booking/my_booking",
         "pages/about/about",
+        "pages/update/update",
         "pages/test/test"
     ],
     "window": {

@@ -6,6 +6,7 @@
 			<l-list title="预约教室：" icon="order"  is-link="{{true}}" bind:lintap="go_booking" />
             <l-list title="预约情况" icon="history"  is-link="{{true}}" bind:lintap="go_bookingInfo" />
             <l-list title="我的预约" icon="notification"  is-link="{{true}}" bind:lintap="go_myBooking" />
+			<l-list title="修改信息" icon="password"  is-link="{{true}}" bind:lintap="go_update_pwd" />
 			<l-list title="联系我们" icon="user"  is-link="{{true}}" bind:lintap="go_about" />
 		</view>
 	</l-card>

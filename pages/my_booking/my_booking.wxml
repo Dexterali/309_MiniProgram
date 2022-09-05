@@ -19,7 +19,7 @@
                         使用规则
                         <l-icon name="down" size="16" color="#999" />
                     </view>
-                    <l-button l-class height="50" size="mini" shape="semicircle" plain="{{true}}" bind:lintap="showBookingInfo">
+                    <l-button l-class height="50" size="mini" shape="semicircle" plain="{{true}}" id="index" data-id="{{index}}" bind:lintap="showBookingInfo">
                         立即使用
                     </l-button>
                 </view>

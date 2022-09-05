@@ -15,13 +15,15 @@ Page({
         show: false,
     },
 
-    showBookingInfo: function () {
+    showBookingInfo: function (event) {
+        // console.log(event)
+        const index = event.target.dataset.id;
         const that = this;
         wx.showModal({
             cancelColor: "black",
             confirmColor: "red",
             title: '你的密码',
-            content: that.data.getInfo[0].password,
+            content: that.data.getInfo[index].password,
             success(res) {
                 if (res.confirm) {
                     console.log('用户点击确定')

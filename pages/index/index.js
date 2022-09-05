@@ -33,6 +33,12 @@ Page({
 		})
 	},
 
+	go_update_pwd: function() {
+		wx.navigateTo({
+			url: `/pages/update/update?account=${this.data.account}`,
+		})
+	},
+
 	onLoad(options) {
 		const { account } = options;
 		this.setData({
