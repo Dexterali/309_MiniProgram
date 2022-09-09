@@ -57,7 +57,7 @@ Page({
                 ]
             }
         */
-        GET("https://api.huolihang.top:5001/", "user/myinfo", { account: account })
+        GET("http://172.24.33.99:3030/", "user/myinfo", { account: account })
             .then(res => {
                 console.log(res);
                 const { data, code } = res.data;

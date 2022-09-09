@@ -104,52 +104,71 @@ Page({
                 ]
             }
         */
-        GET("https://api.huolihang.top:5001/", "user/login", { account: this.data.account })
-            .then(res => {
-                // 如果服务端出现错误！
-                if (res.data.code === 500) {
-                    wx.showModal({
-                        cancelColor: "black",
-                        confirmColor: "red",
-                        title: "网络错误！",
-                        content: "请联系管理员：18801313238",
-                        success(res) {
-                            if (res.confirm) {
-                                // console.log('用户点击确定')
-                            } else if (res.cancel) {
-                                // console.log('用户点击取消')
-                            }
-                        }
-                    })
-                }
-                this.setData({
-                    getInfo: res.data.data[0],
-                })
-                if (this.data.account.length == 0 || this.data.password.length == 0) {
-                    wx.showToast({
-                        title: '账号或密码不能为空',
-                        icon: 'none',
-                        duration: 2000
-                    })
-                } else if (this.data.getInfo.authorization === 1 && this.data.account === this.data.getInfo.account && this.data.password == this.data.getInfo.password) {
-                    // 这里修改成跳转的页面 
-                    wx.showToast({
-                        title: '登录成功',
-                        icon: 'success',
-                        duration: 2000
-                    })
-                    // 跳转至管理视频页面
-                    wx.navigateTo({
-                        url: `/pages/index/index?account=${this.data.account}`
-                    });
-                } else {
-                    console.log("密码错误", this.data)
-                    wx.showToast({
-                        title: '账号或密码错误',
-                        icon: 'error',
-                        duration: 2000
-                    })
-                }
+
+        if (this.data.account.length == 0 || this.data.password.length == 0) {
+            wx.showToast({
+                title: '账号或密码不能为空',
+                icon: 'none',
+                duration: 2000
             })
+        } else {
+            GET("http://172.24.33.99:3030/", "user/login", { account: this.data.account })
+                .then(res => {
+                    console.log(res)
+                    // 如果服务端出现错误！
+                    if (res.data.code === 500 || res.statusCode === 502) {
+                        wx.showModal({
+                            cancelColor: "black",
+                            confirmColor: "red",
+                            title: "网络错误！",
+                            content: "尝试使用校园网或请联系管理员：18801313238",
+                            success(res) {
+                                if (res.confirm) {
+                                    // console.log('用户点击确定')
+                                } else if (res.cancel) {
+                                    // console.log('用户点击取消')
+                                }
+                            }
+                        })
+                    } else if (res.data.data.length === 0) {
+                        wx.showModal({
+                            cancelColor: "black",
+                            confirmColor: "red",
+                            title: "未知账号！",
+                            content: "请联系管理员：18801313238",
+                            success(res) {
+                                if (res.confirm) {
+                                    // console.log('用户点击确定')
+                                } else if (res.cancel) {
+                                    // console.log('用户点击取消')
+                                }
+                            }
+                        })
+                    } else {
+                        this.setData({
+                            getInfo: res.data.data[0],
+                        })
+                        if (this.data.getInfo.authorization === 1 && this.data.account === this.data.getInfo.account && this.data.password == this.data.getInfo.password) {
+                            // 这里修改成跳转的页面 
+                            wx.showToast({
+                                title: '登录成功',
+                                icon: 'success',
+                                duration: 2000
+                            })
+                            // 跳转至管理视频页面
+                            wx.navigateTo({
+                                url: `/pages/index/index?account=${this.data.account}`
+                            });
+                        } else {
+                            console.log("密码错误", this.data)
+                            wx.showToast({
+                                title: '账号或密码错误',
+                                icon: 'error',
+                                duration: 2000
+                            })
+                        }
+                    }
+                })
+        }
     },
 })

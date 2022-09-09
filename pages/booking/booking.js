@@ -120,7 +120,7 @@ Page({
             if (isValidate) {
                 const that = this;
                 console.log(submitInfo);
-                POST("https://api.huolihang.top:5001/", "user/order", submitInfo)
+                POST("http://172.24.33.99:3030/", "user/order", submitInfo)
                     .then(res => {
                         // 服务端返回数据格式如下
                         /* 

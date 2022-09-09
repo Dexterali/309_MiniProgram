@@ -18,7 +18,7 @@ Page({
     getInfo: function (date) {
         const that = this;
 
-        GET("https://api.huolihang.top:5001/", "user/info", { date: date })
+        GET("http://172.24.33.99:3030/", "user/info", { date: date })
             .then(res => {
                 console.log(res);
                 // 服务端返回数据格式如下
@@ -93,7 +93,7 @@ Page({
         const date = e.detail.data;
         const that = this;
 
-        GET("https://api.huolihang.top:5001/", "user/info", { date: date })
+        GET("http://172.24.33.99:3030/", "user/info", { date: date })
             .then(res => {
                 console.log(res);
                 const { data, code } = res.data;

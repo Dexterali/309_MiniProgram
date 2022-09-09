@@ -21,7 +21,7 @@ Page({
         if (isValidate) {
             const that = this;
             console.log(submitInfo);
-            POST("https://api.huolihang.top:5001/", "user/updatepwd", submitInfo)
+            POST("http://172.24.33.99:3030/", "user/updatepwd", submitInfo)
                 .then(res => {
                     console.log(res);
                     const { code } = res.data;
